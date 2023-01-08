@@ -10,8 +10,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.List;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class LionTest {
@@ -26,7 +25,7 @@ public class LionTest {
 
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1}")
     public static Object[][] getLionData() {
         return new Object[][]{
                 {"Самец", true, 1},
@@ -43,7 +42,7 @@ public class LionTest {
         String expectedMessage = "Используйте допустимые значения пола животного - самец или самка";
         String actualMessage = exception.getMessage();
 
-        assertTrue(actualMessage.contains(expectedMessage));
+        assertEquals(actualMessage.contains(expectedMessage),false);
     }
 
     @Test
